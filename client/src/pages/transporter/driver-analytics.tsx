@@ -37,7 +37,6 @@ import { useAuth } from '@/contexts/auth-context';
 import { useLanguageStore } from '@/lib/i18n';
 import type { Trip } from '@/types/trip';
 
-// Modified DriverAnalytics interface that uses Trip instead of TripData
 interface DriverAnalytics {
   driverId: number;
   fullName: string;
@@ -65,14 +64,12 @@ const DriverAnalyticsPage = () => {
   const { t } = useLanguageStore();
   const [, navigate] = useLocation();
 
-  // Fetch driver analytics data
   const { data: analytics, isLoading } = useQuery<DriverAnalytics>({
     queryKey: [`/api/drivers/${phoneNumber}/analytics`],
     enabled: !!phoneNumber,
     refetchOnWindowFocus: false
   });
 
-  // If no user is logged in, redirect to welcome page
   useEffect(() => {
     if (!user) {
       navigate("/");
@@ -83,7 +80,6 @@ const DriverAnalyticsPage = () => {
     return null;
   }
 
-  // If analytics are loading, show a loading state
   if (isLoading || !analytics) {
     return (
       <div className="min-h-screen flex flex-col bg-neutral-50">
@@ -103,7 +99,6 @@ const DriverAnalyticsPage = () => {
     );
   }
 
-  // Format numbers for display
   const formatNumber = (num: number) => {
     return new Intl.NumberFormat('en-IN').format(num);
   };
