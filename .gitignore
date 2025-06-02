@@ -4,4 +4,3 @@ dist
 vite.config.ts.*
 .replit
 *.tar.gz
-client/.env
