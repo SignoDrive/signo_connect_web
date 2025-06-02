@@ -96,7 +96,7 @@ export const BottomNavigation = ({ userType }: BottomNavigationProps) => {
           <NavItem
             to={`${baseRoute}/trips`}
             icon={<FileText {...getIconSize} />}
-            label={"Trips"}
+            label={t("trips")}
             isActive={location === `${baseRoute}/trips`}
             color={activeColor}
           />

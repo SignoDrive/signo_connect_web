@@ -34,7 +34,7 @@ import { FileUpload } from "@/components/ui/file-upload";
 import { Shield, Check } from "lucide-react";
 import Cookies from "js-cookie";
 const frappe_token = import.meta.env.VITE_FRAPPE_API_TOKEN;
-const x_key = import.meta.env.VITE_X_KEY;
+const x_key = import.meta.env.VITE_FRAPPE_X_KEY;
 
 // Schemas
 const basicInfoSchema = z.object({
@@ -228,7 +228,7 @@ const DriverRegistration = () => {
     
         setPendingRegistrationData(null);
         setRegistrationComplete(true);
-        toast.success("Registration successful!");
+        toast.success(t("registration_successful"));
         
         stepper.nextStep();
       } else {
@@ -340,7 +340,7 @@ const DriverRegistration = () => {
                         </FormLabel>
                         <FormControl>
                           <Input 
-                            placeholder="Enter your full name" 
+                            placeholder={t("enter_full_name")} 
                             {...field} 
                           />
                         </FormControl>
